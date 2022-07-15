@@ -23,7 +23,7 @@ function AdminPanel() {
     const [editAllDetails, seteditAllDetails] = useState()
 
 
-    let saveDetails = () => {
+    let saveHotelData = () => {
         saveDetails("hotelDetails", hotelDetails)
         // console.log(hotelDetails)
         setRenderDetails([...renderDetails, hotelDetails])
@@ -91,7 +91,7 @@ function AdminPanel() {
                 <TAInput label="Service 1" onChange={(e) => setHotelDetails({ ...hotelDetails, service1: e.target.value })} />
                 <TAInput label="Service 2" onChange={(e) => setHotelDetails({ ...hotelDetails, service2: e.target.value })} />
                 <TAInput label="Service 3" onChange={(e) => setHotelDetails({ ...hotelDetails, service3: e.target.value })} />
-                <TAButton label="Add" onClick={saveDetails} />
+                <TAButton label="Add" onClick={saveHotelData} />
 
                 <TAInput value={editAllDetails ? editAllDetails.imageLink : ""} label="Image Link" onChange={(e) => seteditAllDetails({ ...editAllDetails, imageLink: e.target.value })} />
                 <TAInput value={editAllDetails ? editAllDetails.hotelName : ""} label="Hotel Name" onChange={(e) => seteditAllDetails({ ...editAllDetails, hotelName: e.target.value })} />

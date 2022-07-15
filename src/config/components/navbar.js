@@ -131,7 +131,7 @@ const ResponsiveAppBar = (props) => {
             >
               {linkRouteList.map((page) => (
                 <MenuItem key={page.routeName} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page.routeName}</Typography>
+                  <Typography onClick={() => MoveToRoute(page.routePath)} textAlign="center">{page.routeName}</Typography>
                 </MenuItem>
               ))}
             </Menu>

@@ -52,7 +52,10 @@ function LogInPg() {
 
     return <>
         <Box sx={{ background: "linear-gradient(to right, #ffefba, #ffffff)", height: "100vh", display: "flex", justifyContent: "center" }}>
-            <Box sx={{ border: "10px ridge orange", padding: "5%", height: "50%" }}>
+            <Box sx={{ border: "10px ridge orange", padding: "2% 5% 5% 5% ", height: "50%" }}>
+                <Box sx={{ paddingBottom: "5%" }}>
+                    <TAButton fullWidth label="Back" onClick={() => navigate("/")} />
+                </Box>
                 <Typography variant="h4">LogIn Form</Typography>
                 <Divider />
                 <Box>

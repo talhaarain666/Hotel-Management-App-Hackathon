@@ -45,12 +45,12 @@ function MyBookings() {
 
    return <>
 
-      <Box sx={{ background: "linear-gradient(to right, #ffefba, #ffffff)" }}>
+      <Box sx={{textAlign:"center", background: "linear-gradient(to right, #ffefba, #ffffff)" }}>
 
          <Typography sx={{ backgroundColor: "black", color: "white", padding: "1%", textAlign: "center" }} variant="h3">Your Previous Bookings</Typography>
          {allPreviousData.map((e, ind) => {
             return <>
-               <Box key={ind} display={"inline-block"} width="28%" sx={{ margin: "1%", backgroundColor: "white", padding: "1%", boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px" }}>
+               <Box key={ind} display={"inline-block"} width="auto" minWidth={"300px"} maxWidth={"500px"} sx={{ margin: "1%", backgroundColor: "white", padding: "1%", boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px" }}>
                   <img width={"100%"} src={e.hotelImage} />
                   <Typography variant="h6">Name: {e.name}</Typography>
                   <Typography variant="h6">CNIC: {e.cnic}</Typography>

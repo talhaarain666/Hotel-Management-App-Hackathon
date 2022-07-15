@@ -46,6 +46,7 @@ function SignUpPg() {
 
     return <>
         <Box sx={{ background: "linear-gradient(to right, #ffefba, #ffffff)", height: "100vh", display: "flex", justifyContent: "center" }}>
+          
             <Box sx={{ border: "10px ridge orange", padding: "5%", height: "50%" }}>
 
             <Typography variant="h4">SignUp Form</Typography>
