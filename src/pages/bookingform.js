@@ -29,7 +29,7 @@ function BookingForm() {
     useEffect(() => {
         // console.log(dataFromRedux)
         // console.log(location)
-        if (dataFromRedux || localStorageDataSignUp ? localStorageDataSignUp : localStorageDataLogIn) {
+        if (dataFromRedux || localStorageDataSignUp || localStorageDataLogIn) {
 
         } else {
             navigate("/login")

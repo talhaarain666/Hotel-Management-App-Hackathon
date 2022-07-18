@@ -1,4 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 import app from "./firebaseconfig";
 import { getDatabase, onValue, push, ref, remove, set, update } from "firebase/database";
 
@@ -58,15 +58,15 @@ const saveData = (nodeName, userObj, uid) => {
   return set(ref(database, `${nodeName}/${uid}`), userObj);
 }
 
-// const getData = (nodeName, uid) => {
-//     const starCountRef = ref(database, `${nodeName}/${uid}`);
-//     return new Promise((resolve, reject) => {
-//      onValue(starCountRef, (snapshot) => {
-//         const data = snapshot.val();
-//         resolve(data)
-//     });
-// })
-// }
+const getSingleData = (nodeName, uid) => {
+    const starCountRef = ref(database, `${nodeName}/${uid}`);
+    return new Promise((resolve, reject) => {
+     onValue(starCountRef, (snapshot) => {
+        const data = snapshot.val();
+        resolve(data)
+    });
+})
+}
 
 const SignUp = (userObj) => {
   return new Promise((resolve, reject) => {
@@ -77,7 +77,7 @@ const SignUp = (userObj) => {
         const user = userCredential.user;
         saveData("users", userObj, user.uid).then(() => {
 
-          resolve("User created successfully");
+          resolve(user);
         })
         // ...
       })
@@ -99,8 +99,9 @@ const logIn = (userObj) => {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
+        // console.log(user)
         getData("users", user.uid).then((res) => {
-          resolve(res)
+          resolve(user)
         }).catch((err) => {
           console.log(err)
           reject(err)
@@ -117,4 +118,30 @@ const logIn = (userObj) => {
 }
 
 
-export { saveDetails, getData, updateData, deleteData, SignUp, logIn }
+
+let checkAuthUser = (user) => {
+  return new Promise((resolve, reject) => {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+     const uid = user.uid;
+      resolve(uid)
+    } else {
+      reject("User is signed out")
+    }
+  });
+})
+};
+let logOutUser = () => {
+  return new Promise((resolve, reject) => {
+  signOut(auth)
+    .then(() => {
+      resolve("Sign-out successful")
+    })
+    .catch((error) => {
+      reject(error)
+    });
+  });
+};
+
+
+export { saveDetails, getData, updateData, deleteData, SignUp, logIn,getSingleData,checkAuthUser,logOutUser }

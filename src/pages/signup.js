@@ -30,10 +30,11 @@ function SignUpPg() {
             return;
         }
         setLoader(true)
-        SignUp(obj).then(() => {
+        SignUp(obj).then((res) => {
+            console.log(res)
             setLoader(false)
             alert("SignUp Successfully")
-            localStorage.setItem("signUpData", JSON.stringify({ userName: obj.userName, email: obj.email }))
+            localStorage.setItem("signUpData", JSON.stringify({ userUid: res.uid }))
             navigate("/")
         }).catch((err) => {
             setLoader(false)

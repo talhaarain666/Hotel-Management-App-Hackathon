@@ -34,14 +34,14 @@ function LogInPg() {
         setLoader(true)
         logIn(obj).then((res) => {
             alert("Login Successfully")
-            // console.log(res)
+            console.log(res.uid)
             dispatch({
                 type: "DATAFROMLOGIN",
-                payload: res,
+                payload: res.uid,
             })
-            navigate("/")
-            localStorage.setItem("logInData", JSON.stringify({ userName: obj.userName, email: obj.email }))
+            localStorage.setItem("logInData", JSON.stringify({ userUid: res.uid }))
             setLoader(false)
+            navigate("/")
         }).catch((err) => {
             setLoader(false)
             alert(err)

@@ -48,6 +48,10 @@ const ResponsiveAppBar = (props) => {
 
   const [routeList, setRouteList] = React.useState([
     {
+      routeName: "My Profile",
+      routePath: "profile",
+    },
+    {
       routeName: "My Bookings",
       routePath: "mybookings",
     },
@@ -170,7 +174,8 @@ const ResponsiveAppBar = (props) => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt={props.imageFletter} src={'Hello'.split(' ').map(word => word[0])} />
+                <Avatar alt={props.imageFletter} src={props.imageFletter} />
+                {/* 'Hello'.split(' ').map(word => word[0]) */}
               </IconButton>
             </Tooltip>
             <Menu

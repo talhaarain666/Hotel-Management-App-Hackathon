@@ -15,6 +15,7 @@ import MyBookings from "../../pages/mybookings";
 import SignUpPg from "../../pages/signup";
 import UserBookingDetails from "../../pages/userbookingdetails";
 import ResponsiveAppBar from "../components/navbar";
+import Profile from "../../pages/profile";
 
 export default function AppRouting() {
     return (
@@ -25,6 +26,7 @@ export default function AppRouting() {
                 <Route path="bookingform" element={<BookingForm />} />
                 <Route path="paymentform" element={<PaymentForm />} />
                 <Route path="bookingdetails" element={<UserBookingDetails />} />
+                <Route path="profile" element={<Profile />} />
                 <Route path="login" element={<LogInPg />} />
                 <Route path="signup" element={<SignUpPg />} />
                 <Route path="mybookings" element={<MyBookings />} />

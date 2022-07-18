@@ -13,39 +13,60 @@ function MyBookings() {
    const [prevData, setPrevData] = useState([]);
 
    useEffect(() => {
-      if (dataSignUp) {
-         // console.log(dataSignUp)
-      } if (dataLogin) {
-         // console.log(dataLogin)
-      }
-      else {
+
+      if (!dataSignUp && !dataLogin) {
          navigate("/login")
       }
+
       getData("bookingForm").then((res) => {
          setPrevData(res)
-
       })
 
    }, [])
 
-
    let allPreviousData = [];
-   let check = () => {
+   let funcForLoginData = () => {
 
       for (var i = 0; i < prevData.length; i++) {
-         if (dataLogin.email == prevData[i].userData.email) {
+
+         if (dataLogin.userUid == prevData[i].userData.userUid) {
             // console.log(prevData[i].name)
             allPreviousData.push(prevData[i])
          }
       }
    }
-   check();
+   let funcForSignupData = () => {
+
+      for (var i = 0; i < prevData.length; i++) {
+
+         if (dataSignUp.userUid == prevData[i].userData.userUid) {
+            // console.log(prevData[i].name)
+            allPreviousData.push(prevData[i])
+         }
+      }
+   }
+
+
+   if (dataSignUp) {
+      // console.log(dataSignUp)
+      funcForSignupData();
+   } if (dataLogin) {
+      // console.log(dataLogin)
+      funcForLoginData();
+   }
+   // else {
+   //    navigate("/login")
+   // }
+
+
+
+
 
    // console.log(allPreviousData)
 
    return <>
 
-      <Box sx={{textAlign:"center", background: "linear-gradient(to right, #ffefba, #ffffff)" }}>
+      <Box sx={{ textAlign: "center", background: "linear-gradient(to right, #ffefba, #ffffff)" }}>
 
          <Typography sx={{ backgroundColor: "black", color: "white", padding: "1%", textAlign: "center" }} variant="h3">Your Previous Bookings</Typography>
          {allPreviousData.map((e, ind) => {
@@ -64,7 +85,7 @@ function MyBookings() {
                </Box>
             </>
          })}
-     
+
       </Box>
    </>
 
