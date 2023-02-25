@@ -6,9 +6,10 @@ import { Link } from "react-router-dom"
 import { logIn } from "../config/firebase/firebasemethods";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Divider, Typography } from "@mui/material";
+import { Button, Divider, Typography } from "@mui/material";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
-function LogInPg() {
+function LogInPg(props) {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -33,7 +34,7 @@ function LogInPg() {
         }
         setLoader(true)
         logIn(obj).then((res) => {
-            alert("Login Successfully")
+            props.showAlert("Logged In Successfully", "success")
             console.log(res.uid)
             dispatch({
                 type: "DATAFROMLOGIN",
@@ -51,23 +52,27 @@ function LogInPg() {
 
 
     return <>
-        <Box sx={{ background: "linear-gradient(to right, #ffefba, #ffffff)", height: "100vh", display: "flex", justifyContent: "center" }}>
-            <Box sx={{ border: "10px ridge orange", padding: "2% 5% 5% 5% ", height: "50%" }}>
-                <Box sx={{ paddingBottom: "5%" }}>
-                    <TAButton fullWidth label="Back" onClick={() => navigate("/")} />
+        <Box sx={{ minHeight: "100vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <Box sx={{ padding: "5%", height: "50%", backgroundColor: "white",boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" }}>
+                <Box sx={{ padding: "2% 0.5%", background: "linear-gradient(to left, #6441a5, #2a0845)",display:"flex" }}>
+
+                    <Button onClick={() => navigate("/")} sx={{ width: "fit-content" }}>
+                        <ArrowBackIosIcon sx={{color: '#ffcc33'}}/>
+                    </Button>
+
+                    <Typography sx={{ color: '#ffcc33' }} variant="h5">Login Form</Typography>
                 </Box>
-                <Typography variant="h4">LogIn Form</Typography>
-                <Divider />
-                <Box>
+                
+                <Box marginY={"5%"}>
                     <TAInput label="Enter Email" onChange={(e) => setEmail(e.target.value)} />
                 </Box>
-                <Box>
+                <Box marginY={"5%"}>
                     <TAInput label="Enter Password" type="password" onChange={(e) => setPassword(e.target.value)} />
                 </Box>
-                <Box sx={{ margin: "1em 1em 1em 0.5em" }}>
+                <Box sx={{ margin: "2em 1em 2em 0.5em" }}>
                     New Here? <Link to="/signup">Create Account</Link>
                 </Box>
-                <Box sx={{ margin: "1em 1em 1em 0.5em" }}>
+                <Box sx={{ margin: "0em 1em 0em 0.5em" }}>
                     <TAButton label="Login" onClick={loginUser} />
                 </Box>
             </Box>

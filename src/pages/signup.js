@@ -40,31 +40,33 @@ function SignUpPg() {
             setLoader(false)
             alert(err)
         })
-        // console.log(obj)
 
     }
 
 
     return <>
-        <Box sx={{ background: "linear-gradient(to right, #ffefba, #ffffff)", height: "100vh", display: "flex", justifyContent: "center" }}>
-          
-            <Box sx={{ border: "10px ridge orange", padding: "5%", height: "50%" }}>
 
-            <Typography variant="h4">SignUp Form</Typography>
-                <Divider />
-                <Box>
+       
+        <Box sx={{ minHeight: "100vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <Box sx={{ padding: "5%", height: "50%", backgroundColor: "white", boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" }}>
+
+                <Box sx={{ padding: "3%", background: "linear-gradient(to left, #6441a5, #2a0845)" }}>
+                    <Typography sx={{ color: '#ffcc33' }} variant="h5">Signup Form</Typography>
+                </Box>
+
+                <Box marginY={"5%"}>
                     <TAInput label="Enter Name" onChange={(e) => setUserName(e.target.value)} />
                 </Box>
-                <Box>
+                <Box marginY={"5%"}>
                     <TAInput label="Enter Email" onChange={(e) => setEmail(e.target.value)} />
                 </Box>
-                <Box>
+                <Box marginY={"5%"}>
                     <TAInput label="Enter Password" type="password" onChange={(e) => setPassword(e.target.value)} />
                 </Box>
-                <Box sx={{ margin: "1em 1em 1em 0.5em" }}>
+                <Box sx={{ margin: "2em 1em 2em 0.5em" }}>
                     already have an account? <Link to="/login">Login</Link>
                 </Box>
-                <Box sx={{ margin: "1em 1em 1em 0.5em" }}>
+                <Box sx={{ margin: "0em 1em 0em 0.5em" }}>
                     <TAButton loading={loader} label="signUp" onClick={signUpUser} />
                 </Box>
             </Box>

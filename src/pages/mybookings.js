@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -48,10 +48,8 @@ function MyBookings() {
 
 
    if (dataSignUp) {
-      // console.log(dataSignUp)
       funcForSignupData();
    } if (dataLogin) {
-      // console.log(dataLogin)
       funcForLoginData();
    }
    // else {
@@ -60,31 +58,36 @@ function MyBookings() {
 
 
 
-
-
-   // console.log(allPreviousData)
-
    return <>
+      <Box sx={{ textAlign: "center", }}>
 
-      <Box sx={{ textAlign: "center", background: "linear-gradient(to right, #ffefba, #ffffff)" }}>
+         <Typography sx={{ background: "linear-gradient(to left, #6441a5, #2a0845)", color: "white", padding: "1%", textAlign: "center",marginBottom:"2rem",fontSize:"5vw" }}>Your Previous Bookings</Typography>
 
-         <Typography sx={{ backgroundColor: "black", color: "white", padding: "1%", textAlign: "center" }} variant="h3">Your Previous Bookings</Typography>
-         {allPreviousData.map((e, ind) => {
-            return <>
-               <Box key={ind} display={"inline-block"} width="auto" minWidth={"300px"} maxWidth={"500px"} sx={{ margin: "1%", backgroundColor: "white", padding: "1%", boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px" }}>
-                  <img width={"100%"} src={e.hotelImage} />
-                  <Typography variant="h6">Name: {e.name}</Typography>
-                  <Typography variant="h6">CNIC: {e.cnic}</Typography>
-                  <Typography variant="h6">Contact: {e.contact}</Typography>
-                  <Typography variant="h6">Address: {e.address}</Typography>
-                  <Typography variant="h6">Hotel Name: {e.userHotel}</Typography>
-                  <Typography variant="h6">No Of Persons: {e.noOfPersons}</Typography>
-                  <Typography variant="h6">No Of Days: {e.noOfDays}</Typography>
-                  <Typography variant="h6">Per Day Price: {e.hotelPerDayPrice}</Typography>
-                  <Typography variant="h6">Total : {e.hotelPerDayPrice * e.noOfDays}</Typography>
-               </Box>
-            </>
-         })}
+         <Grid container spacing={2} display="flex" justifyContent="center">
+
+            {allPreviousData.map((e, ind) => {
+               return <>
+                  <Grid item md={4} lg={3} xl={2} >
+
+                     <Box key={ind} display={"inline-block"} width="auto"  sx={{ margin: "1%", backgroundColor: "white", padding: "1%", boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px", textAlign:"left" }}>
+                        <img width={"300px"} height={"200px"} src={e.hotelImage} />
+                        <Box sx={{padding:"1rem"}}>
+
+                        <Typography variant="p" component={"div"}>Name: {e.name}</Typography>
+                        <Typography variant="p" component={"div"}>CNIC: {e.cnic}</Typography>
+                        <Typography variant="p" component={"div"}>Contact: {e.contact}</Typography>
+                        <Typography variant="p" component={"div"}>Address: {e.address}</Typography>
+                        <Typography variant="p" component={"div"}>Hotel Name: {e.userHotel}</Typography>
+                        <Typography variant="p" component={"div"}>No Of Persons: {e.noOfPersons}</Typography>
+                        <Typography variant="p" component={"div"}>No Of Days: {e.noOfDays}</Typography>
+                        <Typography variant="p" component={"div"}>Per Day Price: {e.hotelPerDayPrice}</Typography>
+                        <Typography variant="p" component={"div"}>Total : {e.hotelPerDayPrice * e.noOfDays}</Typography>
+                        </Box>
+                     </Box>
+                  </Grid>
+               </>
+            })}
+         </Grid>
 
       </Box>
    </>

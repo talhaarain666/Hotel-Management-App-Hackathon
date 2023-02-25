@@ -4,3 +4,25 @@
   font-family: 'Patua One', cursive !important;
   letter-spacing: 0.1ch;
 }
+
+body {
+  min-width: 320px;
+  background-image: url("https://img.freepik.com/free-vector/elegant-white-background-with-shiny-lines_1017-17580.jpg?w=1380&t=st=1673172415~exp=1673173015~hmac=76f9bf7443b549112e5926f58dde832cfc6f7a3a6220a243e8f274100710385f");
+  background-size: cover;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat;
+  height: auto;
+  background-repeat: no-repeat; /* Do not repeat the image */
+
+}
+
+  @media only screen and (max-width: 600px) {
+    .servicesDNone {
+      display: none;
+    }
+    .alignImageData {
+      align-items: baseline !important;
+    }
+
+  }
+ 

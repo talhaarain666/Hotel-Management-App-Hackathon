@@ -4,21 +4,15 @@ import { useSelector } from "react-redux";
 import { checkAuthUser, logOutUser } from "../config/firebase/firebasemethods";
 import { Button } from "@mui/material";
 
-function LogOutUser() {
+function LogOutUser(props) {
 
     const dataFromRedux = useSelector((a) => a.user)
     // console.log(dataFromRedux)
     const navigate = useNavigate();
     useEffect(() => {
 
-        checkAuthUser(dataFromRedux).then((res) => {
-            console.log(res)
-        }).catch((err) => {
-            console.log(err)
-        })
-        
         logOutUser().then((res)=>{
-            alert(res)
+            props.showAlert("Log out Successfully","success")
         }).catch((err)=>{
             console.log(err)
         })

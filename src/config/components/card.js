@@ -20,7 +20,7 @@ export default function ActionAreaCard(props) {
 
 
     return (
-        <Box sx={{ minWidth: 300, display: "inline-block" }}>
+        <Box sx={{ minWidth: 300, display: "inline-block" }} > 
             <Card sx={{ margin: "5%" }}>
                 {/* sx={{ maxWidth: 345 }} */}
                 <CardActionArea>
@@ -42,7 +42,7 @@ export default function ActionAreaCard(props) {
                         </Typography>
                         <List>
                             <ListItem disablePadding sx={{paddingLeft:"10px", backgroundColor: "lightyellow", marginY: "2%" }}>
-                                <ListItemText primary="Our Services" />
+                                <ListItemText  primary="Our Services" />
                             </ListItem>
                             <ul>
                                 <li>

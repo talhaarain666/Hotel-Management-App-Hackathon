@@ -16,17 +16,31 @@ function Profile() {
         profileimg: ""
     });
 
+
+
     useEffect(() => {
 
         if (!dataSignUp && !dataLogin) {
             navigate("/login")
         }
+        else {
 
-        getSingleData("users", dataLogin ? dataLogin.userUid : dataSignUp.userUid).then((res) => {
-            console.log(res)
-            setUserData(res)
-        })
+            getSingleData("users", dataLogin ? dataLogin.userUid : dataSignUp.userUid).then((res) => {
+                setUserData(res)
+            })
+
+            // Image 
+
+            getSingleData("users", dataLogin ? dataLogin.userUid : dataSignUp.userUid).then((res) => {
+                setPImage({ profileimg: res.profileImgLink })
+            })
+
+        }
     }, [])
+
+
+
+
 
 
     let fileVal = (e) => {
@@ -49,32 +63,37 @@ function Profile() {
 
 
     return <>
-        <Typography sx={{ backgroundColor: "black", color: "white", padding: "1%", textAlign: "center", marginBottom: "3%" }} variant="h3">Profile</Typography>
-        <Box display={"flex"} alignItems="center" justifyContent={"space-around"}>
+    <Box sx={{height:"100vh"}}>
+
+        <Typography sx={{ background: "linear-gradient(to left, #6441a5, #2a0845)", color: "white", padding: "0.5%", textAlign: "center", marginBottom: "3%",fontSize:"5vw" }} >Profile</Typography>
+        <Box display={"flex"} alignItems="top" justifyContent={"space-around"} >
             <Box width={"60%"}>
                 <Box margin="2%">
                     <Typography sx={{
-                        backgroundColor: "#045de9",
-                        backgroundImage: "linear-gradient(315deg, #045de9 0%, #09c6f9 74%)",
-                        padding: "2%"
-                    }} variant="h3">Name: {userData.userName}</Typography>
+                        backgroundColor: "lightyellow", 
+                        padding: "2%",
+                        fontSize:"3vw",
+                        boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"
+                    }} >Name: {userData.userName}</Typography>
                 </Box>
                 <Box margin="2%">
                     <Typography sx={{
-                        backgroundColor: "#045de9",
-                        backgroundImage: "linear-gradient(315deg, #045de9 0%, #09c6f9 74%)",
-                        padding: "2%"
-                    }} variant="h3">Email: {userData.email}</Typography>
+                        backgroundColor: "lightyellow",
+                        padding: "2%",
+                        fontSize:"3vw",
+                        boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"
+                    }}>Email: {userData.email}</Typography>
                 </Box>
             </Box>
 
             <Box width={"30%"}>
                 <img width={"100%"} src={pImage.profileimg} />
-                <input type={"file"} onChange={(e) => fileVal(e)} accept="image/*" />
+                <input style={{ width: "100%" }} type={"file"} onChange={(e) => fileVal(e)} accept="image/*" />
             </Box>
         </Box>
 
 
+                    </Box>
     </>
 }
 

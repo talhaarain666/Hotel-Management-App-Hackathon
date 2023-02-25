@@ -82,7 +82,7 @@ const ResponsiveAppBar = (props) => {
   }
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{background:"linear-gradient(to left, #6441a5, #2a0845)"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -97,7 +97,7 @@ const ResponsiveAppBar = (props) => {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: '#ffcc33',
               textDecoration: 'none',
             }}
           >
@@ -153,11 +153,11 @@ const ResponsiveAppBar = (props) => {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: '#ffcc33',
               textDecoration: 'none',
             }}
           >
-            LOGO
+            TALHA
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {linkRouteList.map((page) => (
